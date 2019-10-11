@@ -1,0 +1,67 @@
+数据类型：
+基本类型：
+string
+number
+boolean
+undefined：undefined
+null:null
+对象类型
+Object：任意对象
+Function：特别对象（可以执行）
+Array：特别对象（数值下标，内部数据有序）
+
+判断：
+typeof：
+可以判断：undefined
+不能判断：null与object object与array
+instanceof：
+判断对象的具体类型
+===：判断类型和值
+可以判断：undefined
+
+undefined和null区别：
+undefined表示定义了未赋值
+null表示定义并赋值null
+
+什么时候变量赋值为null：
+初始赋值，表明将要数值给对象
+结束前，让对象成为垃圾对象被回收
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var a 
+		console.log(a, typeof a, typeof a==='undefined', a===undefined)//undefined 'undefined' true true
+
+
+		//对象
+		var b1 = {
+			b2: [1, 'abc', console.log],
+			b3: function() {
+				console.log('b3')
+				return function() {
+					return 'zhang'
+				}
+			}
+		}
+		console.log(b1 instanceof Object, b1 instanceof Array)//true false
+		console.log(b1.b2 instanceof Array, b1.b2 instanceof Object)// true true
+		console.log(b1.b3 instanceof Function, b1.b3 instanceof Object)//true true
+		console.log(typeof b1.b3==='function')//true
+		console.log(b1.b3()())//zhang
+	</script>
+
+	<script type="text/javascript">
+		function Person(name, age) {//构造函数 类型
+			this.name = name
+			this.age = age
+		}
+		var p = new Person('tom', 12) //根据类型创建的实例
+	</script>
+</body>
+</html>

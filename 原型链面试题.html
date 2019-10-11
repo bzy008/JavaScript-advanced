@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function A() {
+
+		}
+		A.prototype.n = 1
+		var b = new A()
+
+		A.prototype = {
+			n: 2,
+			m: 3
+		}
+
+		var c = new A()
+		console.log(b.n, b.m, c.n, c.m) //1 undefined 2 3
+
+		//测试2
+		function F() {}
+		Object.prototype.a = function() {
+			console.log('a()')
+		}
+		Function.prototype.b = function() {
+			console.log('b()')
+		}
+		var f = new F()
+		f.a()//可以
+		f.b()//不能执行
+		F.a()//true
+		F.b()//true
+	</script>
+</body>
+</html>

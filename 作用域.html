@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	1.理解
+	它是静态的，在编写代码时就确定了
+
+	2.全局作用域
+	函数作用域
+
+	3.作用
+	隔离变量，不同作用域下同名变量不会冲突
+
+	<script type="text/javascript">
+		var a = 10, b = 20
+		function fn(x) {
+			var a = 100, c = 300;
+			console.log('fn()', a ,b, c, x)
+			function bar(x) {
+				var a = 1000, d = 400;
+				console.log('bar()', a, b, c, d, x)
+			}
+
+			bar(100)
+			bar(200)
+		}
+		fn(10)
+		//fn() 100 20 300 10
+		//bar() 1000 20 300 400 100
+		//bar() 1000 20 300 400 200
+	</script>
+
+	<script type="text/javascript">
+		var x = 10;
+		function fn() {
+			console.log(x); 
+		}
+		function show(f) {
+			var x = 20;
+			f();
+		}
+		show(fn); //10
+	</script>
+
+	<script type="text/javascript">
+		var fn = function() {
+			console.log(fn)
+		}
+		fn() //f(){}
+		var obj = {
+			fn2: function() {
+				console.log(fn2) //console.log(this.fn2) 修改
+			}
+		}
+		obj.fn2() //报错
+	</script>
+</body>
+</html>

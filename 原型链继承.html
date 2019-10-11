@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	定义父类型的构造函数
+	给父类型的原型链添加方法
+	定义子类型的构造函数
+	创建父类型的对象赋值给子类型的原型
+	给子类型原型添加方法
+	创建子类型的对象：可以调用父类型的方法
+
+	关键：
+	子类型的原型为父类型的一个实例对象
+	<script type="text/javascript">
+		//父类型
+		function Supper() {
+			this.supProp = 'Supper property'
+		}
+		Supper.prototype.showSupperProp = function() {
+			console.log(this.supProp)
+		}
+		//子类型
+		function Sub() {
+			this.subProp = 'Sub property'
+		}
+
+		Sub.prototype = new Supper()
+		Sub.prototype.showSubProp = function() {
+			console.log(this.subProp)
+		}
+		//子类型的原型为父类型的一个实力对象
+		var sub = new Sub()
+		sub.showSupperProp()
+		sub.toString()
+	</script>
+</body>
+</html>  
